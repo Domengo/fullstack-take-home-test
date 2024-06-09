@@ -28,6 +28,7 @@ import BookList from './components/BookList.tsx';
 import ReadingList from './components/ReadingList.tsx';
 // import SearchBar from './components/SearchBar.tsx';
 
+
 const client = new ApolloClient({
   uri: 'http://localhost:4000/',
   cache: new InMemoryCache()
