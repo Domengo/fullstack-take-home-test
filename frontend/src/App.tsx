@@ -22,10 +22,11 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import Container from '@mui/material/Container';
 import { useState } from 'react';
+import Navbar from './components/Navbar.tsx';
 
 import BookList from './components/BookList.tsx';
 import ReadingList from './components/ReadingList.tsx';
-import SearchBar from './components/SearchBar.tsx';
+// import SearchBar from './components/SearchBar.tsx';
 
 const client = new ApolloClient({
   uri: 'http://localhost:4000/',
@@ -46,7 +47,8 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Container>
-        <SearchBar setSearch={setSearch} />
+        {/* <SearchBar setSearch={setSearch} /> */}
+        <Navbar setSearch={setSearch} />
         <BookList search={search} addBook={addBook} />
         <ReadingList readingList={readingList} removeBook={removeBook} />
       </Container>
