@@ -38,9 +38,9 @@ function App() {
   const [search, setSearch] = useState('');
   const [readingList, setReadingList] = useState([]);
   
-  const addBook = (book) => setReadingList([...readingList, book]);
+  const addBook = (book: never) => setReadingList([...readingList, book]);
   
-  const removeBook = (removedBook) => {
+  const removeBook = (removedBook: never) => {
     setReadingList(readingList.filter(book => book !== removedBook));
   }
 
