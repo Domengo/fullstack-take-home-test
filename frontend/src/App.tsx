@@ -21,7 +21,7 @@
 //   .then((result) => console.log(result));
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import Container from '@mui/material/Container';
-import { useState } from 'react';
+import { ReactNode, useState } from 'react';
 import Navbar from './components/Navbar.tsx';
 
 import BookList from './components/BookList.tsx';
@@ -36,11 +36,11 @@ const client = new ApolloClient({
 
 function App() {
   const [search, setSearch] = useState('');
-  const [readingList, setReadingList] = useState([]);
+  const [readingList, setReadingList] = useState<{ author: ReactNode; title: string; }[]>([]);
   
-  const addBook = (book: never) => setReadingList([...readingList, book]);
+  const addBook = (book: { author: ReactNode; title: string; }) => setReadingList([...readingList, book]);
   
-  const removeBook = (removedBook: never) => {
+  const removeBook = (removedBook: { author: ReactNode; title: string; }) => {
     setReadingList(readingList.filter(book => book !== removedBook));
   }
 
