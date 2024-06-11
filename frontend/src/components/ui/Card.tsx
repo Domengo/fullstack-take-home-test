@@ -39,7 +39,7 @@ const Card = ({
   author,
   addBook,
 }: {
-  coverPhotoURL: string;
+  coverPhotoURL: string | undefined;
   title: string;
   author: ReactNode;
   addBook: () => void;
