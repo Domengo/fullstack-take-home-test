@@ -1,7 +1,17 @@
 import { ReactNode } from "react";
-import { Box, IconButton, ThemeProvider, Typography } from "@mui/material";
+import { IconButton, ThemeProvider } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 import AddIcon from "@mui/icons-material/Add";
+
+import AspectRatio from '@mui/joy/AspectRatio';
+import Avatar from '@mui/joy/Avatar';
+import Box from '@mui/joy/Box';
+import Card from '@mui/joy/Card';
+import IconButton from '@mui/joy/IconButton';
+import Typography from '@mui/joy/Typography';
+import Link from '@mui/joy/Link';
+import FavoriteBorderRoundedIcon from '@mui/icons-material/FavoriteBorderRounded';
+
 
 const theme = createTheme({
   palette: {
@@ -33,7 +43,7 @@ theme.typography.body2 = {
   fontVariant: "small-caps",
 };
 
-const Card = ({
+const Cardy = ({
   coverPhotoURL,
   title,
   author,
@@ -121,4 +131,4 @@ const Card = ({
   );
 };
 
-export default Card;
+export default Cardy;
