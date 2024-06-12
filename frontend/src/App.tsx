@@ -5,7 +5,8 @@ import Navbar from './components/Navbar.tsx';
 
 import BookList from './components/BookList.tsx';
 import ReadingList from './components/ReadingList.tsx';
-// import SearchBar from './components/SearchBar.tsx';
+import { ThemeProvider } from '@mui/material';
+import { theme } from './components/ui/Theme.ts';
 
 
 const client = new ApolloClient({
@@ -25,14 +26,15 @@ function App() {
 
 
   return (
+    <ThemeProvider theme={theme}>
     <ApolloProvider client={client}>
       <Container>
-        {/* <SearchBar setSearch={setSearch} /> */}
         <Navbar setSearch={setSearch}/>
         <BookList search={search} addBook={addBook} removeBook={removeBook} readingList={readingList}/>
         <ReadingList readingList={readingList} removeBook={removeBook} />
       </Container>
     </ApolloProvider>
+    </ThemeProvider>
   );
 }
 

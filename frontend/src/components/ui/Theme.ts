@@ -10,7 +10,7 @@ export const theme = createTheme({
       },
     },
     typography: {
-      fontFamily: "Roboto",
+      fontFamily: "'Mulish', sans-serif",
       fontSize: 16,
     },
   });
