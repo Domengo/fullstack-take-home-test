@@ -41,7 +41,7 @@ function App() {
   const addBook = (book: { author: ReactNode; title: string; }) => setReadingList([...readingList, book]);
   
   const removeBook = (removedBook: { author: ReactNode; title: string; }) => {
-    setReadingList(readingList.filter(book => book !== removedBook));
+    setReadingList(readingList.filter(book => book.title !== removedBook.title));
   }
 
 
@@ -50,7 +50,7 @@ function App() {
       <Container>
         {/* <SearchBar setSearch={setSearch} /> */}
         <Navbar setSearch={setSearch} />
-        <BookList search={search} addBook={addBook} />
+        <BookList search={search} addBook={addBook} removeBook={removeBook} />
         <ReadingList readingList={readingList} removeBook={removeBook} />
       </Container>
     </ApolloProvider>
