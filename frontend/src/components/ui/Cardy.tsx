@@ -116,7 +116,6 @@ const Cardy = ({
         >
           <IconButton aria-label="favorite" onClick={toggleFavorite}>
           {isFavorite ? <FavoriteRounded color="secondary" /> : <FavoriteBorderOutlined color="secondary" />}
-            {/* <FavoriteBorderOutlined color="secondary" /> */}
           </IconButton>
         </CardActions>
       </Card>

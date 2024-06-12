@@ -50,7 +50,7 @@ function App() {
       <Container>
         {/* <SearchBar setSearch={setSearch} /> */}
         <Navbar setSearch={setSearch} />
-        <BookList search={search} addBook={addBook} removeBook={removeBook} />
+        <BookList search={search} addBook={addBook} removeBook={removeBook} readingList={readingList}/>
         <ReadingList readingList={readingList} removeBook={removeBook} />
       </Container>
     </ApolloProvider>

@@ -55,7 +55,9 @@ const BookList = ({
     }
   }, [data, search, readingList]);
 
-  const toggleFavoriteStatus = (title: string, isFavorite: boolean) => {
+  const toggleFavoriteStatus = (book: { author: ReactNode; title: string }) => {
+    const { title } = book;
+
     setBooks((books) =>
       books.map((book) =>
         book.title === title ? { ...book, isFavorite: !book.isFavorite } : book
@@ -64,7 +66,7 @@ const BookList = ({
 
     const selectedBook = books.find((book) => book.title === title);
     if (selectedBook) {
-      if (!isFavorite) {
+      if (!selectedBook.isFavorite) {
         addBook(selectedBook);
       } else {
         removeBook(selectedBook);
@@ -87,7 +89,7 @@ const BookList = ({
             author={book.author}
             isFavorite={book.isFavorite}
             toggleFavorite={() => {
-              toggleFavoriteStatus(book.title, book.isFavorite);
+              toggleFavoriteStatus(book);
             }}
           />
         </Grid>
