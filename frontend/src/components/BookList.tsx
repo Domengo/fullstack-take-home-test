@@ -1,7 +1,7 @@
 import { useQuery, gql } from "@apollo/client";
 import { ReactNode, useEffect, useState } from "react";
 import Grid from "@mui/material/Grid";
-import Cardy from "./ui/Card";
+import Card from "./ui/Cardd";
 
 const BOOKS_QUERY = gql`
   query Books {
@@ -49,7 +49,7 @@ const BookList = ({
       <Grid container spacing={3}>
         {books.map((book, index) => (
           <Grid key={index} item xs={12} sm={8} md={6} lg={3}>
-            <Cardy
+            <Card
               coverPhotoURL={book.coverPhotoURL}
               title={book.title}
               author={book.author}
