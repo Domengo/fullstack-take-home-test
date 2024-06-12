@@ -18,10 +18,12 @@ const BookList = ({
   search,
   addBook,
   removeBook,
+  readingList,
 }: {
   search: string;
   addBook: (book: { author: ReactNode; title: string }) => void;
   removeBook: (book: { author: ReactNode; title: string }) => void;
+  readingList: Array<{ author: ReactNode; title: string }>;
 }) => {
   const { loading, error, data } = useQuery(BOOKS_QUERY);
   const [books, setBooks] = useState<
@@ -46,12 +48,12 @@ const BookList = ({
             title: string;
           }) => ({
             ...book,
-            isFavorite: false, // Initialize the favorite status for each book
+            isFavorite: readingList.some((b) => b.title === book.title), // Check if the book is in the reading list
           })
         );
       setBooks(filteredBooks);
     }
-  }, [data, search]);
+  }, [data, search, readingList]);
 
   const toggleFavoriteStatus = (title: string, isFavorite: boolean) => {
     setBooks((books) =>
