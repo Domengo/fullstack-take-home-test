@@ -1,50 +1,22 @@
-import { ReactNode, useRef } from "react";
+import { ReactNode, useRef, useEffect } from "react";
 import {
   Box,
   IconButton,
   ThemeProvider,
   Typography,
-  createTheme,
   Card,
   CardContent,
   CardMedia,
   CardActionArea,
   CardActions,
 } from "@mui/material";
-
+import { theme } from "./Theme";
 
 import { FavoriteRounded, FavoriteBorderOutlined } from "@mui/icons-material";
 import gsap from 'gsap';
+import { useGSAP } from "@gsap/react";
 
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#3f51b5",
-    },
-    secondary: {
-      main: "#f50057",
-    },
-  },
-  typography: {
-    fontFamily: "Roboto",
-    fontSize: 16,
-  },
-});
-
-theme.typography.body2 = {
-  fontSize: "1rem",
-  "@media (min-width:600px)": {
-    fontSize: "1rem",
-  },
-  [theme.breakpoints.up("md")]: {
-    fontSize: "1rem",
-  },
-  fontWeight: 500,
-  lineHeight: 1,
-  letterSpacing: "0.00138em",
-  fontStyle: "italic",
-  fontVariant: "small-caps",
-};
+gsap.registerPlugin(useGSAP);
 
 const Cardy = ({
   coverPhotoURL,
@@ -59,6 +31,25 @@ const Cardy = ({
   isFavorite: boolean;
   toggleFavorite: () => void;
 }) => {
+  const iconRef = useRef(null);
+
+// GSAP animation effect
+const animateFavorite = () => {
+  gsap.fromTo(iconRef.current, 
+    { scale: 1 },
+    { scale: 1.3, duration: 0.3, ease: "elastic.out(1, 0.75)", yoyo: true }
+  );
+};
+
+useEffect(() => {
+  if (iconRef.current) {
+    iconRef.current.addEventListener('click', animateFavorite);
+    return () => {
+      iconRef.current.removeEventListener('click', animateFavorite);
+    };
+  }
+}, [iconRef]);
+
   return (
     <ThemeProvider theme={theme}>
       <Card sx={{ maxWidth: 345, height: { xs: 300, sm: 350, md: 400 } , position: "relative", boxShadow: 3 }}>
@@ -116,7 +107,7 @@ const Cardy = ({
             zIndex: 2,
           }}
         >
-          <IconButton aria-label="favorite" onClick={toggleFavorite}>
+          <IconButton aria-label="favorite" onClick={toggleFavorite} ref={iconRef}>
           {isFavorite ? <FavoriteRounded color="secondary" /> : <FavoriteBorderOutlined color="secondary" />}
           </IconButton>
         </CardActions>
