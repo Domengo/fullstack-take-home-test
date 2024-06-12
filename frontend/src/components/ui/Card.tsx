@@ -2,6 +2,10 @@ import { ReactNode } from "react";
 import { Box, IconButton, ThemeProvider, Typography } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 import AddIcon from "@mui/icons-material/Add";
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import { CardActionArea, CardActions } from '@mui/material';
 
 const theme = createTheme({
   palette: {
@@ -33,7 +37,7 @@ theme.typography.body2 = {
   fontVariant: "small-caps",
 };
 
-const Card = ({
+const Cardy = ({
   coverPhotoURL,
   title,
   author,
@@ -122,4 +126,4 @@ const Card = ({
   );
 };
 
-export default Card;
+export default Cardy;
