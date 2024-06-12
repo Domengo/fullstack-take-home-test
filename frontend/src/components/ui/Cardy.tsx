@@ -13,7 +13,7 @@ import {
 import { theme } from "./Theme";
 
 import { FavoriteRounded, FavoriteBorderOutlined } from "@mui/icons-material";
-import gsap from 'gsap';
+import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(useGSAP);
@@ -33,26 +33,35 @@ const Cardy = ({
 }) => {
   const iconRef = useRef(null);
 
-// GSAP animation effect
-const animateFavorite = () => {
-  gsap.fromTo(iconRef.current, 
-    { scale: 1 },
-    { scale: 1.3, duration: 0.3, ease: "elastic.out(1, 0.75)", yoyo: true }
-  );
-};
+  // GSAP animation effect
+  const animateFavorite = () => {
+    gsap.fromTo(
+      iconRef.current,
+      { scale: 1 },
+      { scale: 1.5, duration: 0.3, ease: "elastic.out(1, 0.75)", yoyo: true, repeat: 1}
+    );
+  };
 
-useEffect(() => {
-  if (iconRef.current) {
-    iconRef.current.addEventListener('click', animateFavorite);
-    return () => {
-      iconRef.current.removeEventListener('click', animateFavorite);
-    };
-  }
-}, [iconRef]);
+  useEffect(() => {
+    if (iconRef.current) {
+      const currentRef = iconRef.current as HTMLElement;
+      currentRef.addEventListener("click", animateFavorite);
+      return () => {
+        currentRef.removeEventListener("click", animateFavorite);
+      };
+    }
+  }, [iconRef]);
 
   return (
     <ThemeProvider theme={theme}>
-      <Card sx={{ maxWidth: 345, height: { xs: 300, sm: 350, md: 400 } , position: "relative", boxShadow: 3 }}>
+      <Card
+        sx={{
+          maxWidth: 345,
+          height: { xs: 300, sm: 350, md: 400 },
+          position: "relative",
+          boxShadow: 3,
+        }}
+      >
         <CardActionArea sx={{ height: "100%" }}>
           <CardMedia
             component="img"
@@ -107,8 +116,16 @@ useEffect(() => {
             zIndex: 2,
           }}
         >
-          <IconButton aria-label="favorite" onClick={toggleFavorite} ref={iconRef}>
-          {isFavorite ? <FavoriteRounded color="secondary" /> : <FavoriteBorderOutlined color="secondary" />}
+          <IconButton
+            aria-label="favorite"
+            onClick={toggleFavorite}
+            ref={iconRef}
+          >
+            {isFavorite ? (
+              <FavoriteRounded color="secondary" />
+            ) : (
+              <FavoriteBorderOutlined color="secondary" />
+            )}
           </IconButton>
         </CardActions>
       </Card>
