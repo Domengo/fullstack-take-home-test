@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, useRef } from "react";
 import {
   Box,
   IconButton,
@@ -12,7 +12,9 @@ import {
   CardActions,
 } from "@mui/material";
 
+
 import { FavoriteRounded, FavoriteBorderOutlined } from "@mui/icons-material";
+import gsap from 'gsap';
 
 const theme = createTheme({
   palette: {
