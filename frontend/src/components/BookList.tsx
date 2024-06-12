@@ -33,15 +33,6 @@ const BookList = ({
     }[]
   >([]);
 
-  // useEffect(() => {
-  //   if (data) {
-  //     setBooks(
-  //       data.books.filter((book: { title: string }) =>
-  //         book.title.toLowerCase().includes(search.toLowerCase())
-  //       )
-  //     );
-  //   }
-  // }, [data, search]);
   useEffect(() => {
     if (data) {
       const filteredBooks = data.books
@@ -62,13 +53,6 @@ const BookList = ({
     }
   }, [data, search]);
 
-  // const toggleFavoriteStatus = (title: string, isFavorite: boolean) => {
-  //   setBooks((books) =>
-  //     books.map((book) =>
-  //       book.title === title ? { ...book, isFavorite: !book.isFavorite } : book
-  //     )
-  //   );
-  // };
   const toggleFavoriteStatus = (title: string, isFavorite: boolean) => {
     setBooks((books) =>
       books.map((book) =>
@@ -102,11 +86,6 @@ const BookList = ({
             isFavorite={book.isFavorite}
             toggleFavorite={() => {
               toggleFavoriteStatus(book.title, book.isFavorite);
-              // if (book.isFavorite) {
-              //   addBook(book);
-              // } else {
-              //   addBook(book); // Add or remove the book based on favorite status
-              // }
             }}
           />
         </Grid>
