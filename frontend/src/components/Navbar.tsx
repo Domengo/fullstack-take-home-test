@@ -6,16 +6,17 @@ import Container from "@mui/material/Container";
 import SearchIcon from "@mui/icons-material/Search";
 import { Link } from "react-router-dom";
 
-
 const Navbar = ({ setSearch }: { setSearch: (value: string) => void }) => {
-  
-
-  const handleSearch = (e: { target: { value: string; }; }) => {
+  const handleSearch = (e: { target: { value: string } }) => {
     setSearch(e.target.value);
   };
 
   return (
-    <Container>
+    <Container
+      sx={{
+        marginBottom: 2,
+      }}
+    >
       <AppBar position="static">
         <Toolbar>
           <Typography
@@ -42,8 +43,8 @@ const Navbar = ({ setSearch }: { setSearch: (value: string) => void }) => {
               width: "100%",
             }}
           >
-            <Container sx={
-              {
+            <Container
+              sx={{
                 padding: 2,
                 height: "100%",
                 position: "absolute",
@@ -51,8 +52,8 @@ const Navbar = ({ setSearch }: { setSearch: (value: string) => void }) => {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-              }
-            }>
+              }}
+            >
               <SearchIcon />
             </Container>
             <InputBase

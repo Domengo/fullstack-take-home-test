@@ -28,7 +28,7 @@ function App() {
     <ApolloProvider client={client}>
       <Container>
         {/* <SearchBar setSearch={setSearch} /> */}
-        <Navbar setSearch={setSearch} />
+        <Navbar setSearch={setSearch}/>
         <BookList search={search} addBook={addBook} removeBook={removeBook} readingList={readingList}/>
         <ReadingList readingList={readingList} removeBook={removeBook} />
       </Container>
