@@ -76,8 +76,8 @@ const BookList = ({
 
   if (loading) return "Loading...";
   if (error) return `Error! ${error.message}`;
-  console.log(books.map((book) => book.coverPhotoURL));
-  console.log(books.map((book) => typeof book.coverPhotoURL));
+  // console.log(books.map((book) => book.coverPhotoURL));
+  // console.log(books.map((book) => typeof book.coverPhotoURL));
 
   return (
     <Grid container spacing={3}>
