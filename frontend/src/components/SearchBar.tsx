@@ -3,6 +3,7 @@ import TextField from "@mui/material/TextField";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 import SearchIcon from "@mui/icons-material/Search";
+import { debounce } from 'lodash';
 import gsap from "gsap";
 
 const SearchBar = ({ setSearch }: { setSearch: (search: string) => void }) => {
@@ -15,9 +16,9 @@ const SearchBar = ({ setSearch }: { setSearch: (search: string) => void }) => {
     setSearch(inputRef.current?.value || "");
   };
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = debounce((event: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(event.target.value);
-  };
+  }, 300);
 
   const toggleInputVisibility = () => {
     if (inputVisible) {
