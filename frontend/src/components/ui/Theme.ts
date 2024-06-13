@@ -27,6 +27,6 @@ export const theme = createTheme({
     lineHeight: 1,
     letterSpacing: "0.00138em",
     fontStyle: "italic",
-    fontVariant: "small-caps",
+    // fontVariant: "small-caps",
   };
   

@@ -39,7 +39,13 @@ const Cardy = ({
     gsap.fromTo(
       iconRef.current,
       { scale: 1 },
-      { scale: 1.5, duration: 0.3, ease: "elastic.out(1, 0.75)", yoyo: true, repeat: 1}
+      {
+        scale: 1.5,
+        duration: 0.3,
+        ease: "elastic.out(1, 0.75)",
+        yoyo: true,
+        repeat: 1,
+      }
     );
   };
 
@@ -92,8 +98,8 @@ const Cardy = ({
             sx={{
               position: "absolute",
               bottom: 2,
-              left: 2,
-              right: 2,
+              // left: 2,
+              // right: 2,
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
@@ -101,12 +107,16 @@ const Cardy = ({
               color: "white",
             }}
           >
-            <Typography variant="body2" gutterBottom>
-              {title}
-            </Typography>
-            <Typography variant="body2" gutterBottom>
-              {author}
-            </Typography>
+            <Tooltip title="title">
+              <Typography variant="body2" gutterBottom>
+                {title}
+              </Typography>
+            </Tooltip>
+            <Tooltip title="author">
+              <Typography variant="body2" gutterBottom>
+                {author}
+              </Typography>
+            </Tooltip>
           </CardContent>
         </CardActionArea>
         <CardActions
@@ -118,17 +128,17 @@ const Cardy = ({
           }}
         >
           <Tooltip title="add to reading list">
-          <IconButton
-            aria-label="favorite"
-            onClick={toggleFavorite}
-            ref={iconRef}
-          >
-            {isFavorite ? (
-              <FavoriteRounded color="secondary" />
-            ) : (
-              <FavoriteBorderOutlined color="secondary" />
-            )}
-          </IconButton>
+            <IconButton
+              aria-label="favorite"
+              onClick={toggleFavorite}
+              ref={iconRef}
+            >
+              {isFavorite ? (
+                <FavoriteRounded color="secondary" />
+              ) : (
+                <FavoriteBorderOutlined color="secondary" />
+              )}
+            </IconButton>
           </Tooltip>
         </CardActions>
       </Card>
