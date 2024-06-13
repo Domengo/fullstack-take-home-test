@@ -23,6 +23,7 @@ const ReadingList = ({ readingList, removeBook }: ReadingListProps) => {
         {readingList.map((book: Book, index: number) => (
           <ListItem key={index}>
             <ListItemText primary={book.title} secondary={book.author} />
+            
             <IconButton aria-label="remove" onClick={() => removeBook(book)}>
               <RemoveCircleOutlineIcon color='secondary' />
             </IconButton>

@@ -6,6 +6,7 @@ import {
   Dialog,
   DialogTitle,
   DialogContent,
+  Tooltip,
 } from "@mui/material";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 import { ReactNode } from "react";
@@ -36,9 +37,14 @@ const ReadingListModal = ({
           {readingList.map((book: Book, index: number) => (
             <ListItem key={index}>
               <ListItemText primary={book.title} secondary={book.author} />
-              <IconButton aria-label="remove" onClick={() => removeBook(book)}>
-                <RemoveCircleOutlineIcon color="secondary" />
-              </IconButton>
+              <Tooltip title="Remove from reading list" arrow>
+                <IconButton
+                  aria-label="remove"
+                  onClick={() => removeBook(book)}
+                >
+                  <RemoveCircleOutlineIcon color="secondary" />
+                </IconButton>
+              </Tooltip>
             </ListItem>
           ))}
         </List>

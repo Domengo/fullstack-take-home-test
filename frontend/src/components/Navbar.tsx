@@ -56,9 +56,17 @@ import { Book } from "./ReadingListModal";
 import IconButton from "@mui/material/IconButton";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ReadingListModal from "./ReadingListModal";
+import { Tooltip } from "@mui/material";
 
-const Navbar = ({ setSearch, readingList, removeBook }: { setSearch: (value: string) => void, readingList: Book[], removeBook: (book: { title: string, author: ReactNode }) => void}) => {
-
+const Navbar = ({
+  setSearch,
+  readingList,
+  removeBook,
+}: {
+  setSearch: (value: string) => void;
+  readingList: Book[];
+  removeBook: (book: { title: string; author: ReactNode }) => void;
+}) => {
   const logoRef = useRef<HTMLAnchorElement>(null);
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -82,10 +90,7 @@ const Navbar = ({ setSearch, readingList, removeBook }: { setSearch: (value: str
     <Container sx={{ marginBottom: 2 }}>
       <AppBar position="static">
         <Toolbar>
-          <Typography
-            variant="h6"
-            sx={{ flexGrow: 1, display: "block" }}  
-          >
+          <Typography variant="h6" sx={{ flexGrow: 1, display: "block" }}>
             <Link
               ref={logoRef}
               to="/"
@@ -97,12 +102,19 @@ const Navbar = ({ setSearch, readingList, removeBook }: { setSearch: (value: str
             </Link>
           </Typography>
           <SearchBar setSearch={setSearch} />
-          <IconButton onClick={handleModalOpen} sx={{ color: "white" }}>
-            <FavoriteIcon />
-          </IconButton>
+          <Tooltip title="Reading List" arrow>
+            <IconButton onClick={handleModalOpen} sx={{ color: "white" }}>
+              <FavoriteIcon />
+            </IconButton>
+          </Tooltip>
         </Toolbar>
       </AppBar>
-      <ReadingListModal open={modalOpen} handleClose={handleModalClose} readingList={readingList} removeBook={removeBook} />
+      <ReadingListModal
+        open={modalOpen}
+        handleClose={handleModalClose}
+        readingList={readingList}
+        removeBook={removeBook}
+      />
     </Container>
   );
 };
