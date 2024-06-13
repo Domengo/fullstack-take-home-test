@@ -9,6 +9,7 @@ import {
   CardMedia,
   CardActionArea,
   CardActions,
+  Tooltip,
 } from "@mui/material";
 import { theme } from "./Theme";
 
@@ -116,6 +117,7 @@ const Cardy = ({
             zIndex: 2,
           }}
         >
+          <Tooltip title="add to reading list">
           <IconButton
             aria-label="favorite"
             onClick={toggleFavorite}
@@ -127,6 +129,7 @@ const Cardy = ({
               <FavoriteBorderOutlined color="secondary" />
             )}
           </IconButton>
+          </Tooltip>
         </CardActions>
       </Card>
     </ThemeProvider>

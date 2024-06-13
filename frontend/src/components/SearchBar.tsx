@@ -53,7 +53,7 @@ const SearchBar = ({ setSearch }: { setSearch: (search: string) => void }) => {
           marginRight: 1,
         }}
       />
-      <Tooltip title="Reading List" arrow>
+      <Tooltip title="search" arrow>
         <IconButton onClick={toggleInputVisibility}>
           <SearchIcon />
         </IconButton>
