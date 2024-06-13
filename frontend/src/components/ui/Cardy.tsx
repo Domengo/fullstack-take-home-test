@@ -12,6 +12,7 @@ import {
   Tooltip,
 } from "@mui/material";
 import { theme } from "./Theme";
+// import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 import { FavoriteRounded, FavoriteBorderOutlined } from "@mui/icons-material";
 import gsap from "gsap";

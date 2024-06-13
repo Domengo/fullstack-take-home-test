@@ -1,10 +1,13 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import Container from "@mui/material/Container";
-import { ReactNode, useState } from "react";
-import Navbar from "./components/Navbar.tsx";
-import BookList from "./components/BookList.tsx";
+import { ReactNode, useState, lazy } from "react";
+// import Navbar from "./components/Navbar.tsx";
+// import BookList from "./components/BookList.tsx";
 import { ThemeProvider } from "@mui/material";
 import { theme } from "./components/ui/Theme.ts";
+
+const Navbar = lazy(() => import('./components/Navbar'));
+const BookList = lazy(() => import('./components/BookList'));
 
 const client = new ApolloClient({
   uri: "http://localhost:4000/",
