@@ -51,7 +51,9 @@ import { gsap } from "gsap";
 import { useState, useRef, ReactNode } from "react";
 import { Book } from "./ReadingListModal";
 import ReadingListModal from "./ReadingListModal";
+import CssBaseline from "@mui/material/CssBaseline";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import HideOnScroll, { Props } from "./HideOnScroll";
 import {
   AppBar,
   Tooltip,
@@ -66,10 +68,12 @@ const Navbar = ({
   setSearch,
   readingList,
   removeBook,
+  props,
 }: {
   setSearch: (value: string) => void;
   readingList: Book[];
   removeBook: (book: { title: string; author: ReactNode }) => void;
+  props: Props;
 }) => {
   const logoRef = useRef<HTMLAnchorElement>(null);
   const [modalOpen, setModalOpen] = useState(false);
@@ -92,29 +96,32 @@ const Navbar = ({
 
   return (
     <Container sx={{ marginBottom: 2 }}>
-      <AppBar position="static">
-        <Toolbar>
-          <Typography variant="h6" sx={{ flexGrow: 1, display: "block" }}>
-            <Link
-              ref={logoRef}
-              to="/"
-              style={{ color: "white", textDecoration: "none" }}
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-            >
-              Ello
-            </Link>
-          </Typography>
-          <SearchBar setSearch={setSearch} />
-          <Tooltip title="Reading List" arrow>
-            <IconButton onClick={handleModalOpen} sx={{ color: "white" }}>
-            <Badge badgeContent={readingList.length} color="secondary">
-                <FavoriteIcon />
-              </Badge>
-            </IconButton>
-          </Tooltip>
-        </Toolbar>
-      </AppBar>
+      <CssBaseline />
+      <HideOnScroll {...props}>
+        <AppBar>
+          <Toolbar>
+            <Typography variant="h5" sx={{ flexGrow: 1, display: "block" }}>
+              <Link
+                ref={logoRef}
+                to="/"
+                style={{ color: "white", textDecoration: "none" }}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+              >
+                Ello Books
+              </Link>
+            </Typography>
+            <SearchBar setSearch={setSearch} />
+            <Tooltip title="Reading List" arrow>
+              <IconButton onClick={handleModalOpen} sx={{ color: "white" }}>
+                <Badge badgeContent={readingList.length} color="secondary">
+                  <FavoriteIcon />
+                </Badge>
+              </IconButton>
+            </Tooltip>
+          </Toolbar>
+        </AppBar>
+      </HideOnScroll>
       <ReadingListModal
         open={modalOpen}
         handleClose={handleModalClose}
