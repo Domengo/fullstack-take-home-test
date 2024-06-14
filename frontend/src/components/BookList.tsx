@@ -151,23 +151,13 @@
 
 // export default BookList;
 
-import { useQuery, gql, NetworkStatus } from "@apollo/client";
+import { useQuery, NetworkStatus } from "@apollo/client";
 import { ReactNode, useEffect, useState } from "react";
 import Grid from "@mui/material/Grid";
 import Cardy from "./ui/Cardy";
 import { Button, Backdrop, CircularProgress } from "@mui/material";
 import { useOutletContext } from "react-router-dom";
-
-const BOOKS_QUERY = gql`
-  query Books {
-    books {
-      author
-      coverPhotoURL
-      readingLevel
-      title
-    }
-  }
-`;
+import {BOOKS_QUERY} from "../graphql/queries";
 
 type BookListContext = {
   search: string;
