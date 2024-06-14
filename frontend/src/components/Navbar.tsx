@@ -44,19 +44,23 @@
 // };
 
 // export default Navbar;
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
+
 import SearchBar from "./SearchBar";
 import { Link } from "react-router-dom";
 import { gsap } from "gsap";
 import { useState, useRef, ReactNode } from "react";
 import { Book } from "./ReadingListModal";
-import IconButton from "@mui/material/IconButton";
-import FavoriteIcon from "@mui/icons-material/Favorite";
 import ReadingListModal from "./ReadingListModal";
-import { Tooltip } from "@mui/material";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import {
+  AppBar,
+  Tooltip,
+  Badge,
+  IconButton,
+  Container,
+  Typography,
+  Toolbar,
+} from "@mui/material";
 
 const Navbar = ({
   setSearch,
@@ -104,7 +108,9 @@ const Navbar = ({
           <SearchBar setSearch={setSearch} />
           <Tooltip title="Reading List" arrow>
             <IconButton onClick={handleModalOpen} sx={{ color: "white" }}>
-              <FavoriteIcon />
+            <Badge badgeContent={readingList.length} color="secondary">
+                <FavoriteIcon />
+              </Badge>
             </IconButton>
           </Tooltip>
         </Toolbar>
