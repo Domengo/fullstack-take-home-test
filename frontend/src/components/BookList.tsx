@@ -17,6 +17,19 @@ import { RefreshOutlined } from "@mui/icons-material";
 import { useOutletContext } from "react-router-dom";
 import { BOOKS_QUERY } from "../graphql/queries";
 
+type Book = {
+  id: number;
+  title: string;
+  author: string;
+  coverPhotoURL: string;
+  readingLevel: string;
+  isFavorite?: boolean; 
+}
+
+type BooksData = {
+  books: Book[];
+};
+
 type BookListContext = {
   search: string;
   addBook: (book: { author: ReactNode; title: string }) => void;
@@ -39,18 +52,29 @@ const BookList = () => {
     }[]
   >([]);
 
-  const { error, data, fetchMore, refetch, networkStatus } = useQuery(
+  const { error, data:responseData, fetchMore, refetch, networkStatus } = useQuery(
     BOOKS_QUERY,
     {
       variables: { offset: 0, limit },
       fetchPolicy: "network-only",
-      pollInterval: 500,
+      pollInterval: 15500,
       notifyOnNetworkStatusChange: true,
     }
   );
 
+  const [hasMoreBooks, setHasMoreBooks] = useState(true);
+
   useEffect(() => {
-    if (data) {
+    // console.log('responseData', responseData);
+    if (responseData) {
+      const data = responseData as unknown as BooksData;
+
+      if (data.books.length < limit) {
+        setHasMoreBooks(false);
+      } else {
+        setHasMoreBooks(true); // If not, there may still be more books
+      }
+
       const filteredBooks = data.books
         .filter((book: { title: string }) =>
           book.title.toLowerCase().includes(search.toLowerCase())
@@ -69,10 +93,10 @@ const BookList = () => {
         offset === 0 ? filteredBooks : [...prevBooks, ...filteredBooks]
       );
     }
-  }, [data, offset, readingList, search]);
+  }, [responseData, offset, readingList, search, limit]);
 
   const toggleFavoriteStatus = (book: { author: ReactNode; title: string }) => {
-    const { title } = book;
+    const { title, author } = book;
 
     setBooks((books) =>
       books.map((book) =>
@@ -80,7 +104,8 @@ const BookList = () => {
       )
     );
 
-    const selectedBook = books.find((book) => book.title === title);
+    // const selectedBook = books.find((book) => book.title === title);
+    const selectedBook = books.find((book) => (book.title === title && book.author === author));
     if (selectedBook) {
       if (!selectedBook.isFavorite) {
         addBook(selectedBook);
@@ -100,8 +125,8 @@ const BookList = () => {
     });
   };
 
-  const handleLimitChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    const newLimit = event.target.value as number;
+  const handleLimitChange = (event: SelectChangeEvent<string>) => {
+    const newLimit = parseInt(event.target.value, 10);
     setLimit(newLimit);
     setOffset(0); // Reset offset whenever the limit changes
     refetch({ offset: 0, limit: newLimit }); // Refetch with the new limit
@@ -124,6 +149,7 @@ const BookList = () => {
           justifyContent: "space-between",
           alignItems: "center",
           marginBottom: "20px",
+          marginTop: "75px",
         }}
       >
         <Button
@@ -133,13 +159,23 @@ const BookList = () => {
         >
           Refresh <RefreshOutlined />
         </Button>
-        <FormControl sx={{ marginBottom: "20px", minWidth: 120 }}>
-          <InputLabel>Limit</InputLabel>
+        <FormControl
+          sx={{
+            marginBottom: "20px",
+            minWidth: 120,
+          }}
+        >
+          <InputLabel
+            id="limit-select-label"
+            // sx={{ marginBottom: "10px" }}
+          >
+            Limit
+          </InputLabel>
           <Select
-            value={limit}
-            onChange={(event: SelectChangeEvent<number>) =>
-              handleLimitChange(event)
-            }
+            labelId="limit-select-label"
+            id="limit-select"
+            value={limit.toString()} // Convert limit to a string
+            onChange={handleLimitChange}
           >
             <MenuItem value={5}>5</MenuItem>
             <MenuItem value={10}>10</MenuItem>
@@ -178,6 +214,7 @@ const BookList = () => {
           variant="contained"
           color="primary"
           style={{ marginTop: "20px" }}
+          disabled={!hasMoreBooks}
         >
           Load More
         </Button>

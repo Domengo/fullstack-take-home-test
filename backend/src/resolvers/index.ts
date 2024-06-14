@@ -1,11 +1,3 @@
-// import { booksData } from '../data/books';
-
-// export const resolvers = {
-//   Query: {
-//     books: 
-//     () => booksData,
-//   },
-// };
 import { booksData } from '../data/books';
 
 interface Book {
