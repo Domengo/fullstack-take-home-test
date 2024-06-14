@@ -13,6 +13,7 @@ import {
   Box,
   SelectChangeEvent,
 } from "@mui/material";
+import { RefreshOutlined } from "@mui/icons-material";
 import { useOutletContext } from "react-router-dom";
 import { BOOKS_QUERY } from "../graphql/queries";
 
@@ -130,11 +131,16 @@ const BookList = () => {
           variant="outlined"
           sx={{ marginBottom: "20px" }}
         >
-          Refresh
+          Refresh <RefreshOutlined />
         </Button>
         <FormControl sx={{ marginBottom: "20px", minWidth: 120 }}>
           <InputLabel>Limit</InputLabel>
-          <Select value={limit} onChange={(event: SelectChangeEvent<number>) => handleLimitChange(event)}>
+          <Select
+            value={limit}
+            onChange={(event: SelectChangeEvent<number>) =>
+              handleLimitChange(event)
+            }
+          >
             <MenuItem value={5}>5</MenuItem>
             <MenuItem value={10}>10</MenuItem>
             <MenuItem value={20}>20</MenuItem>
@@ -158,15 +164,24 @@ const BookList = () => {
           </Grid>
         ))}
       </Grid>
-
-      <Button
-        onClick={loadMoreBooks}
-        variant="contained"
-        color="primary"
-        style={{ marginTop: "20px" }}
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          marginTop: "20px",
+          marginBottom: "20px",
+        }}
       >
-        Load More
-      </Button>
+        <Button
+          onClick={loadMoreBooks}
+          variant="contained"
+          color="primary"
+          style={{ marginTop: "20px" }}
+        >
+          Load More
+        </Button>
+      </Box>
     </>
   );
 };
