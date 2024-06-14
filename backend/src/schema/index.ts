@@ -1,5 +1,6 @@
 export const typeDefs = `#graphql
   type Book {
+    id: Int!
     title: String
     author: String
     coverPhotoURL: String
@@ -7,6 +8,6 @@ export const typeDefs = `#graphql
   }
 
   type Query {
-    books: [Book]
+    books(limit: Int, offset: Int): [Book]
   }
 `;

@@ -16,9 +16,9 @@ import { theme } from "./Theme";
 
 import { FavoriteRounded, FavoriteBorderOutlined } from "@mui/icons-material";
 import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
+// import { useGSAP } from "@gsap/react";
 
-gsap.registerPlugin(useGSAP);
+// gsap.registerPlugin(useGSAP);
 
 const Cardy = ({
   coverPhotoURL,
