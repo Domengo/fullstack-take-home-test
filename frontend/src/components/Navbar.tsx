@@ -53,7 +53,7 @@ import { Book } from "./ReadingListModal";
 import ReadingListModal from "./ReadingListModal";
 import CssBaseline from "@mui/material/CssBaseline";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import HideOnScroll, { Props } from "./HideOnScroll";
+import HideOnScroll from "./HideOnScroll";
 import {
   AppBar,
   Tooltip,
@@ -68,12 +68,12 @@ const Navbar = ({
   setSearch,
   readingList,
   removeBook,
-  props,
+  // props,
 }: {
   setSearch: (value: string) => void;
   readingList: Book[];
   removeBook: (book: { title: string; author: ReactNode }) => void;
-  props: Props;
+  // props: Props;
 }) => {
   const logoRef = useRef<HTMLAnchorElement>(null);
   const [modalOpen, setModalOpen] = useState(false);
@@ -97,7 +97,7 @@ const Navbar = ({
   return (
     <Container sx={{ marginBottom: 2 }}>
       <CssBaseline />
-      <HideOnScroll {...props}>
+      <HideOnScroll >
         <AppBar>
           <Toolbar>
             <Typography variant="h5" sx={{ flexGrow: 1, display: "block" }}>
