@@ -68,7 +68,6 @@ const BookList = () => {
   const [hasMoreBooks, setHasMoreBooks] = useState(true);
 
   useEffect(() => {
-    // console.log('responseData', responseData);
     if (responseData) {
       const data = responseData as unknown as BooksData;
 
