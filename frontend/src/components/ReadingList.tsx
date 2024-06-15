@@ -1,9 +1,10 @@
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import IconButton from '@mui/material/IconButton';
-import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
-import { ReactNode } from 'react';
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
+import IconButton from "@mui/material/IconButton";
+import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
+import { ReactNode } from "react";
+import Typography from "@mui/material/Typography";
 
 type Book = {
   title: string;
@@ -18,14 +19,17 @@ interface ReadingListProps {
 const ReadingList = ({ readingList, removeBook }: ReadingListProps) => {
   return (
     <>
-      <h2>Your Reading List</h2>
+      <Typography variant="h4" component="h2">
+        Your Reading List
+      </Typography>
       <List>
         {readingList.map((book: Book, index: number) => (
           <ListItem key={index}>
-            <ListItemText primary={book.title} secondary={book.author} />
-            
+            <Typography variant="h6">
+              <ListItemText primary={book.title} secondary={book.author} />
+            </Typography>
             <IconButton aria-label="remove" onClick={() => removeBook(book)}>
-              <RemoveCircleOutlineIcon color='secondary' />
+              <RemoveCircleOutlineIcon color="secondary" />
             </IconButton>
           </ListItem>
         ))}

@@ -101,7 +101,7 @@ const Cardy = ({
             }}
           >
             <Tooltip title="title">
-              <Typography variant="body2" gutterBottom>
+              <Typography variant="body1" gutterBottom>
                 {title}
               </Typography>
             </Tooltip>
