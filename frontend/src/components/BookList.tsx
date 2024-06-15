@@ -23,8 +23,8 @@ type Book = {
   author: string;
   coverPhotoURL: string;
   readingLevel: string;
-  isFavorite?: boolean; 
-}
+  isFavorite?: boolean;
+};
 
 type BooksData = {
   books: Book[];
@@ -52,15 +52,18 @@ const BookList = () => {
     }[]
   >([]);
 
-  const { error, data:responseData, fetchMore, refetch, networkStatus } = useQuery(
-    BOOKS_QUERY,
-    {
-      variables: { offset: 0, limit },
-      fetchPolicy: "network-only",
-      pollInterval: 15500,
-      notifyOnNetworkStatusChange: true,
-    }
-  );
+  const {
+    error,
+    data: responseData,
+    fetchMore,
+    refetch,
+    networkStatus,
+  } = useQuery(BOOKS_QUERY, {
+    variables: { offset: 0, limit },
+    fetchPolicy: "network-only",
+    pollInterval: 15500,
+    notifyOnNetworkStatusChange: true,
+  });
 
   const [hasMoreBooks, setHasMoreBooks] = useState(true);
 
@@ -104,8 +107,9 @@ const BookList = () => {
       )
     );
 
-    // const selectedBook = books.find((book) => book.title === title);
-    const selectedBook = books.find((book) => (book.title === title && book.author === author));
+    const selectedBook = books.find(
+      (book) => book.title === title && book.author === author
+    );
     if (selectedBook) {
       if (!selectedBook.isFavorite) {
         addBook(selectedBook);
@@ -165,12 +169,7 @@ const BookList = () => {
             minWidth: 120,
           }}
         >
-          <InputLabel
-            id="limit-select-label"
-            // sx={{ marginBottom: "10px" }}
-          >
-            Limit
-          </InputLabel>
+          <InputLabel id="limit-select-label">Limit</InputLabel>
           <Select
             labelId="limit-select-label"
             id="limit-select"
