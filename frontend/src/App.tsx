@@ -80,7 +80,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <ApolloProvider client={client}>
         <Container>
-          <Navbar setSearch={setSearch} readingList={readingList} removeBook={removeBook} />
+          <Navbar setSearch={setSearch} readingList={readingList} removeBook={removeBook} props={undefined} />
           <Outlet context={{ search, setSearch, addBook, removeBook, readingList }} />
         </Container>
       </ApolloProvider>
