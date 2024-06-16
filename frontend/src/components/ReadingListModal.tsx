@@ -32,40 +32,45 @@ const ReadingListModal = ({
   removeBook,
 }: ReadingListModalProps) => {
   return (
-    <Dialog open={open} onClose={handleClose} fullWidth maxWidth="sm">
-      <DialogTitle>Your Reading List</DialogTitle>
-      <DialogContent>
-        <List>
-          {readingList.map((book: Book, index: number) => (
-            <ListItem key={index}>
-              <ListItemText
-                primary={
-                  <Typography
-                    variant="h6"
-                    sx={{ color: theme.palette.text.primary }}
+    <Typography variant="h6" sx={{
+      backgroundColor: theme.palette.background.paper,
+    }}>
+      <Dialog open={open} onClose={handleClose} fullWidth maxWidth="sm">
+        <Typography variant="h5">
+          <DialogTitle>Your Reading List</DialogTitle>
+        </Typography>
+
+        <DialogContent>
+          <List>
+            {readingList.map((book: Book, index: number) => (
+              <ListItem key={index}>
+                <ListItemText
+                  primary={
+                    <Typography sx={{ color: theme.palette.info.main }}>
+                      {book.title}
+                    </Typography>
+                  }
+                  secondary={
+                    <Typography sx={{ color: theme.palette.text.light}}
+                    }}>
+                      {book.author}
+                    </Typography>
+                  }
+                />
+                <Tooltip title="Remove from reading list" arrow>
+                  <IconButton
+                    aria-label="remove"
+                    onClick={() => removeBook(book)}
                   >
-                    {book.title}
-                  </Typography>
-                }
-                secondary={
-                  <Typography sx={{ color: theme.palette.text.primary }}>
-                    {book.author}
-                  </Typography>
-                }
-              />
-              <Tooltip title="Remove from reading list" arrow>
-                <IconButton
-                  aria-label="remove"
-                  onClick={() => removeBook(book)}
-                >
-                  <RemoveCircleOutlineIcon color="secondary" />
-                </IconButton>
-              </Tooltip>
-            </ListItem>
-          ))}
-        </List>
-      </DialogContent>
-    </Dialog>
+                    <RemoveCircleOutlineIcon color="secondary" />
+                  </IconButton>
+                </Tooltip>
+              </ListItem>
+            ))}
+          </List>
+        </DialogContent>
+      </Dialog>
+    </Typography>
   );
 };
 

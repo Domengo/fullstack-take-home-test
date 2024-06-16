@@ -38,6 +38,8 @@ export const theme = createTheme({
     text: {
       primary: "#FFFFFF", // White
       secondary: "#53C2C2", // Turquoise dark 1
+      light: "#CFFAFA", // Turquoise light
+
     },
     background: {
       default: "#CFFAFA", // Turquoise light
@@ -82,90 +84,90 @@ theme.typography.body2 = {
   color: "#53C2C2",
 };
 
-theme.typography.h1 = {
-  fontSize: "6rem",
-  "@media (min-width:600px)": {
-    fontSize: "6rem",
-  },
-  [theme.breakpoints.up("md")]: {
-    fontSize: "6rem",
-  },
-  fontWeight: 500,
-  lineHeight: 1,
-  letterSpacing: "0.00138em",
-  fontStyle: "italic",
-  fontVariant: "small-caps",
-};
+// theme.typography.h1 = {
+//   fontSize: "6rem",
+//   "@media (min-width:600px)": {
+//     fontSize: "6rem",
+//   },
+//   [theme.breakpoints.up("md")]: {
+//     fontSize: "6rem",
+//   },
+//   fontWeight: 500,
+//   lineHeight: 1,
+//   letterSpacing: "0.00138em",
+//   // fontStyle: "italic",
+//   // fontVariant: "small-caps",
+// };
 
-theme.typography.h2 = {
-  fontSize: "3rem",
-  "@media (min-width:600px)": {
-    fontSize: "3rem",
-  },
-  [theme.breakpoints.up("md")]: {
-    fontSize: "3rem",
-  },
-  fontWeight: 500,
-  lineHeight: 1,
-  letterSpacing: "0.00138em",
-  fontStyle: "italic",
-  fontVariant: "small-caps",
-};
+// theme.typography.h2 = {
+//   fontSize: "3rem",
+//   "@media (min-width:600px)": {
+//     fontSize: "3rem",
+//   },
+//   [theme.breakpoints.up("md")]: {
+//     fontSize: "3rem",
+//   },
+//   fontWeight: 500,
+//   lineHeight: 1,
+//   letterSpacing: "0.00138em",
+//   // fontStyle: "italic",
+//   // fontVariant: "small-caps",
+// };
 
-theme.typography.h3 = {
-  fontSize: "2.5rem",
-  "@media (min-width:600px)": {
-    fontSize: "2.5rem",
-  },
-  [theme.breakpoints.up("md")]: {
-    fontSize: "2.5rem",
-  },
-  fontWeight: 500,
-  lineHeight: 1,
-  letterSpacing: "0.00138em",
-  fontStyle: "italic",
-  fontVariant: "small-caps",
-};
+// theme.typography.h3 = {
+//   fontSize: "2.5rem",
+//   "@media (min-width:600px)": {
+//     fontSize: "2.5rem",
+//   },
+//   [theme.breakpoints.up("md")]: {
+//     fontSize: "2.5rem",
+//   },
+//   fontWeight: 500,
+//   lineHeight: 1,
+//   letterSpacing: "0.00138em",
+//   fontStyle: "italic",
+//   fontVariant: "small-caps",
+// };
 
-theme.typography.h4 = {
-  fontSize: "2rem",
-  "@media (min-width:600px)": {
-    fontSize: "2rem",
-  },
-  [theme.breakpoints.up("md")]: {
-    fontSize: "2rem",
-  },
-  fontWeight: 500,
-  lineHeight: 1,
-  letterSpacing: "0.00138em",
-  fontStyle: "italic",
-  fontVariant: "",
-};
+// theme.typography.h4 = {
+//   fontSize: "2rem",
+//   "@media (min-width:600px)": {
+//     fontSize: "2rem",
+//   },
+//   [theme.breakpoints.up("md")]: {
+//     fontSize: "2rem",
+//   },
+//   fontWeight: 500,
+//   lineHeight: 1,
+//   letterSpacing: "0.00138em",
+//   fontStyle: "italic",
+//   fontVariant: "",
+// };
 
-theme.typography.h5 = {
-  fontSize: "1.5rem",
-  "@media (min-width:600px)": {
-    fontSize: "1.5rem",
-  },
-  [theme.breakpoints.up("md")]: {
-    fontSize: "1.5rem",
-  },
-  fontWeight: 500,
-  lineHeight: 1,
-  letterSpacing: "0.00138em",
-  fontStyle: "italic",
-  fontVariant: "small-caps",
-};
+// theme.typography.h5 = {
+//   fontSize: "1.5rem",
+//   "@media (min-width:600px)": {
+//     fontSize: "1.5rem",
+//   },
+//   [theme.breakpoints.up("md")]: {
+//     fontSize: "1.5rem",
+//   },
+//   fontWeight: 500,
+//   lineHeight: 1,
+//   letterSpacing: "0.00138em",
+//   // fontStyle: "italic",
+//   // fontVariant: "small-caps",
+// };
 
 theme.typography.h6 = {
   fontSize: "1rem",
   "@media (min-width:600px)": {
-    fontSize: "1rem",
+    fontSize: "2rem",
   },
   [theme.breakpoints.up("md")]: {
-    fontSize: "1rem",
+    fontSize: "2rem",
   },
-  fontWeight: 500,
+  fontWeight: 800,
   lineHeight: 1,
   letterSpacing: "0.00138em",
   fontStyle: "italic",
