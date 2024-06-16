@@ -7,9 +7,11 @@ import {
   DialogTitle,
   DialogContent,
   Tooltip,
+  Typography,
 } from "@mui/material";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 import { ReactNode } from "react";
+import { theme } from "./ui/Theme"; // Import theme from Theme.ts
 
 export type Book = {
   title: string;
@@ -36,7 +38,21 @@ const ReadingListModal = ({
         <List>
           {readingList.map((book: Book, index: number) => (
             <ListItem key={index}>
-              <ListItemText primary={book.title} secondary={book.author} />
+              <ListItemText
+                primary={
+                  <Typography
+                    variant="h6"
+                    sx={{ color: theme.palette.text.primary }}
+                  >
+                    {book.title}
+                  </Typography>
+                }
+                secondary={
+                  <Typography sx={{ color: theme.palette.text.primary }}>
+                    {book.author}
+                  </Typography>
+                }
+              />
               <Tooltip title="Remove from reading list" arrow>
                 <IconButton
                   aria-label="remove"

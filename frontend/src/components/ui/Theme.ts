@@ -21,13 +21,13 @@ export const theme = createTheme({
       main: "#5ACCCC", // Turquoise
     },
     secondary: {
-      main: "#F76434", // Orange Red
+      main: "#F76434", // Yellow Orange
     },
     error: {
-      main: "#FF6B6B", // Example color for error
+      main: "#FABD33", // Orange Red
     },
     warning: {
-      main: "#FABD33", // Yellow
+      main: "#FAAD00", // Yellow d\r
     },
     info: {
       main: "#335C6E", // Steel Blue
@@ -170,5 +170,6 @@ theme.typography.h6 = {
   letterSpacing: "0.00138em",
   fontStyle: "italic",
   fontVariant: "small-caps",
+  // color: "#F76434",
 };
 
