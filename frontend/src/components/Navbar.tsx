@@ -16,6 +16,7 @@ import {
   Typography,
   Toolbar,
 } from "@mui/material";
+import Logo from "../Logo";
 
 const Navbar = ({
   setSearch,
@@ -59,7 +60,12 @@ const Navbar = ({
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
               >
-                Ello Books
+                <Logo sx={{
+                  width: "80px",
+                  height: "50px",
+                  // marginRight: "24px",
+                
+                }}/>
               </Link>
             </Typography>
             <SearchBar setSearch={setSearch} />
