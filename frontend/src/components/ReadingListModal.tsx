@@ -8,6 +8,7 @@ import {
   DialogContent,
   Tooltip,
   Typography,
+  Divider,
 } from "@mui/material";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 import { ReactNode } from "react";
@@ -32,17 +33,21 @@ const ReadingListModal = ({
   removeBook,
 }: ReadingListModalProps) => {
   return (
-    <Typography variant="h6" sx={{
-      backgroundColor: theme.palette.background.paper,
-    }}>
-      <Dialog open={open} onClose={handleClose} fullWidth maxWidth="sm">
-        <Typography variant="h5">
-          <DialogTitle>Your Reading List</DialogTitle>
-        </Typography>
+    <Dialog
+      open={open}
+      onClose={handleClose}
+      sx={{ zIndex: 3700 }}
+      fullWidth
+      maxWidth="sm"
+    >
+      <Typography variant="h5">
+        <DialogTitle>Your Reading List</DialogTitle>
+      </Typography>
 
-        <DialogContent>
-          <List>
-            {readingList.map((book: Book, index: number) => (
+      <DialogContent>
+        <List>
+          {readingList.map((book: Book, index: number) => (
+            <>
               <ListItem key={index}>
                 <ListItemText
                   primary={
@@ -51,7 +56,7 @@ const ReadingListModal = ({
                     </Typography>
                   }
                   secondary={
-                    <Typography sx={{ color: theme.palette.text.light}}>
+                    <Typography sx={{ color: theme.palette.text.primary }}>
                       {book.author}
                     </Typography>
                   }
@@ -65,11 +70,13 @@ const ReadingListModal = ({
                   </IconButton>
                 </Tooltip>
               </ListItem>
-            ))}
-          </List>
-        </DialogContent>
-      </Dialog>
-    </Typography>
+              {index !== readingList.length - 1 && <Divider />}{" "}
+              {/* Add a divider except after the last item */}
+            </>
+          ))}
+        </List>
+      </DialogContent>
+    </Dialog>
   );
 };
 

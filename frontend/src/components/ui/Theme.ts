@@ -38,7 +38,6 @@ export const theme = createTheme({
     text: {
       primary: "#FFFFFF", // White
       secondary: "#53C2C2", // Turquoise dark 1
-      light: "#CFFAFA", // Turquoise light
 
     },
     background: {
