@@ -1,6 +1,21 @@
 import { createTheme } from "@mui/material";
 
 export const theme = createTheme({
+  components: {
+    MuiMenuItem: {
+      styleOverrides: {
+        root: {
+          '&.Mui-selected': {  // Targets selected state
+            backgroundColor: '#5ACCCC', // Example color
+            color: '#335C6E',
+            '&:hover': {
+              backgroundColor: '#5ACCCC', // Adjust darker or different color on hover
+            },
+          }
+        }
+      },
+    },
+  },
   palette: {
     primary: {
       main: "#5ACCCC", // Turquoise
@@ -26,6 +41,8 @@ export const theme = createTheme({
     },
     background: {
       default: "#CFFAFA", // Turquoise light
+      paper: "#53C2C2", // Turquoise light
+
     },
   },
   typography: {
@@ -122,7 +139,7 @@ theme.typography.h4 = {
   lineHeight: 1,
   letterSpacing: "0.00138em",
   fontStyle: "italic",
-  fontVariant: "small-caps",
+  fontVariant: "",
 };
 
 theme.typography.h5 = {

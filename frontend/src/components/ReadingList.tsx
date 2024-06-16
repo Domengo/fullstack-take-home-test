@@ -5,6 +5,8 @@ import IconButton from "@mui/material/IconButton";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 import { ReactNode } from "react";
 import Typography from "@mui/material/Typography";
+import { theme } from "./ui/Theme";
+// import Box from "@mui/material/Box";
 
 type Book = {
   title: string;
@@ -19,14 +21,33 @@ interface ReadingListProps {
 const ReadingList = ({ readingList, removeBook }: ReadingListProps) => {
   return (
     <>
-      <Typography variant="h4" component="h2">
+      <Typography
+        variant="h4"
+        component="h2"
+        sx={{ color: theme.palette.text.secondary }}
+      >
         Your Reading List
       </Typography>
       <List>
         {readingList.map((book: Book, index: number) => (
           <ListItem key={index}>
             <Typography variant="h6">
-              <ListItemText primary={book.title} secondary={book.author} />
+              {/*  primary={book.title} secondary={book.author} /> */}
+              <ListItemText
+                primary={
+                  <Typography
+                    variant="h6"
+                    sx={{ color: theme.palette.text.primary }}
+                  >
+                    {book.title}
+                  </Typography>
+                }
+                secondary={
+                  <Typography sx={{ color: theme.palette.text.primary }}>
+                    {book.author}
+                  </Typography>
+                }
+              />
             </Typography>
             <IconButton aria-label="remove" onClick={() => removeBook(book)}>
               <RemoveCircleOutlineIcon color="secondary" />

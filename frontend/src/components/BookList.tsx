@@ -16,6 +16,7 @@ import {
 import { RefreshOutlined } from "@mui/icons-material";
 import { useOutletContext } from "react-router-dom";
 import { BOOKS_QUERY } from "../graphql/queries";
+import { theme } from "./ui/Theme";
 
 type Book = {
   id: number;
@@ -159,6 +160,7 @@ const BookList = () => {
           onClick={() => refetch()}
           variant="outlined"
           sx={{ marginBottom: "20px" }}
+          color="primary"
         >
           Refresh <RefreshOutlined />
         </Button>
@@ -168,12 +170,29 @@ const BookList = () => {
             minWidth: 120,
           }}
         >
-          <InputLabel id="limit-select-label">Limit</InputLabel>
+          <InputLabel
+            id="limit-select-label"
+            sx={{
+              backgroundColor: theme.palette.background.default,
+            }}
+          >
+            Limit
+          </InputLabel>
           <Select
             labelId="limit-select-label"
             id="limit-select"
             value={limit.toString()} // Convert limit to a string
             onChange={handleLimitChange}
+            color="primary"
+            sx={{
+              '.Mui-selected': {  // This targets the selected MenuItem
+                backgroundColor: 'primary.main', // Use theme primary color
+                color: 'white',  // White text color
+                '&:hover': {
+                  backgroundColor: 'primary.dark',  // Darker on hover
+                },
+              }
+            }}
           >
             <MenuItem value={5}>5</MenuItem>
             <MenuItem value={10}>10</MenuItem>
