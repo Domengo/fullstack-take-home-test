@@ -51,8 +51,7 @@ const ReadingListModal = ({
                     </Typography>
                   }
                   secondary={
-                    <Typography sx={{ color: theme.palette.text.light}}
-                    }}>
+                    <Typography sx={{ color: theme.palette.text.light}}>
                       {book.author}
                     </Typography>
                   }
